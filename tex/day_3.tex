@@ -1,0 +1,98 @@
+\documentclass[../notes.tex]{subfiles}
+\begin{document}
+\section{Day 3}
+\begin{theorem}
+    Every natural number $n\geq 2$ factors uniquely into primes,
+    or,
+    \begin{align*}
+        \exists p_1,\dots,p_k\ p_i\neq p_j\forall i,j\ \text{(all primes)}\\
+        \exists a_1,\dots,a_k\\
+        n={p_1}^a_1\dots {p_k}^a_k\\
+    \end{align*}
+    Moreover if
+    \[
+        n={q_1}^b_1\dots {q_l}^b_l\\
+    \]
+    where $q_i$-primes ($q_i\neq q_j$). Then
+    $k=l$ and there is a permutation,
+    \[
+        (i_1,\dots,i_k) \text{of} \{1,\dots,n\}
+    \]
+    with
+    \begin{align*}
+        a_t=b_it\\
+        p_t=q_it\\
+    \end{align*}
+\end{theorem}
+\subsection{Extension to rings:} Let $R$ be a commutative ring with unity. 
+$p\in R$ is prime. If $p=ab$, the following is implied
+\begin{itemize}
+    \item $a$ is invertible in $R$
+    \item $ab$ is invertible in $R$
+\end{itemize}
+\begin{definition}
+    A ring, $R$ is a \underline{Unique Factorization Domain} (U.F.D) if
+    every $a\in R$ with $a\neq 0$, factors into primes,
+    \[
+        a=p_1\dots p_k
+    \]
+    and for any other  factorization,
+    \[
+        a=q_1\dots q_l
+    \]
+    we have $k=l$ and, up to enumeration $p_i=u_iq_i$ for some $u_i$ invertible in
+    $R$
+\end{definition}
+\begin{definition}
+    $\Z[i]$ is the smallest ring containing both $\Z$ and $i$
+\end{definition}
+\begin{proof}
+    Let $\Z_{\geq 0}=\{0,1,\dots\}$
+    \begin{align*}
+        \bigoplus_{i=1}^{\infty}\Z_{\geq 0}&=\{(a_1,a_2,\dots)|a_i\in \Z_{\geq 0},\ 
+        \text{finitely many are non-zero}\}\\
+        \alpha,\beta\in\ \bigoplus_{i=1}^{\infty}\Z_{\geq 0},\
+        \alpha+\beta&=(a_1+b_1,a_2+b_2,\dots)\\
+    \end{align*}
+    Where $\alpha=(a_1,a_2,\dots)$ and $\beta=(b_1,b_2,\dots)$. We can
+    totally order $\bigoplus_{i=1}^{\infty}\Z_{\geq 0}$ i.e. we can introduce a relation
+    with, $\leq$ between the $\bigoplus_{i=1}^{\infty}\Z_{\geq 0}$
+    \begin{enumerate}
+        \item $\alpha \leq \alpha$
+        \item $\alpha \leq \beta\ \&\ \beta \leq \alpha \implies \alpha=\beta$
+        \item $\alpha \leq \gamma \implies \alpha \leq \gamma$
+        \item $\alpha \leq \beta,\ \forall \gamma,\ \alpha+\gamma \leq \beta + \gamma$
+        \item $\forall \alpha,\beta,\ \alpha \leq \beta\ \text{or}\ \beta\leq\alpha$
+    \end{enumerate}
+    \begin{equation*}
+    \begin{tikzcd}
+        n\cdot m\arrow[r, maps to]& \log(n\cdot m)=\log(n)+\log(m)\\
+        \N \arrow[r, "\approx", "\log"'] &\bigoplus_{i=1}^{\infty}\Z_{\geq 0}\\
+        n\arrow[r, maps to]& (a_1,a_2,\dots,a_k,0,\dots)\\
+    \end{tikzcd}
+    \end{equation*}
+    \[
+        n=2^{a_1}3^{a_2}\dots p^{a_k}
+    \]
+    Since we've proven existence, now we need to prove uniqueness.
+    \begin{align*}
+        a&\geq 2\\
+        a&=p_1\dots\p_k=q_1\dots q_l
+    \end{align*}
+    \underline{Note(Should be separate lemma):}
+    \begin{align*}
+        p|nm \implies p|n \text{ or } p|m\\
+    \end{align*}
+    It is easy to show if you assume that $p$ does not
+    divide $n$, which implies that $gcd(n,p)=1$, which gives
+    \begin{align*}
+        xp+yn=1\\
+        mxp+ynm=%m 
+        &\implies p|m
+    \end{align*}
+    Which, without loss of generality, gives
+    \begin{align*}
+        p_1\dots p_k=q_1\dots q_l
+    \end{align*}
+\end{proof}
+\end{document}

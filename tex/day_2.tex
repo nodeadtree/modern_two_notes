@@ -1,0 +1,143 @@
+\documentclass[../notes.tex]{subfiles}
+\begin{document}
+\section{Day 2}
+\begin{definition}
+    A \underline{ring} is a commutative ring with unity.
+\end{definition}
+\begin{definition}
+    A \underline{field} is a ring where every non-zero element has a multiplicative inverse
+\end{definition}
+ The first ring we'll examine is $\Z$, which is the ring of integers
+\begin{definition}
+    Let $R$ be a ring, with $a,b\in R$. We say that $a$ divides $b$ if,
+    \begin{align*}
+        c*a=b
+    \end{align*}
+    and introduce the following notation,
+    \begin{align*}
+        a|b = c
+    \end{align*}
+    \begin{itemize}
+        \item \underline{Transitivity:} This satisfies transitivity as, $a$ divides $b$
+            and $b$ divides $c$ implies that $a$ divides $c$.
+        \item \underline{Reflexivity:} ????
+    \end{itemize}
+\end{definition}
+\begin{definition}
+    Let $p\in \Z$, $p$ is called \underline{prime} if $p>0$ and the divisors of $p$ are $1$ and $p$, with $1\neq p$
+\end{definition}
+\underline{Fact:} $\forall n \geq 2,\ \exists\ p_1,\dots,p_k$, 
+where $p_1,\dots,p_k$ are prime,
+such that $n=p_1p_2\dots p_k$
+\begin{proof}
+    If $n$ is prime, then we are done.\\
+    If $n$ is \underline{not} prime, then it follows that,
+    \begin{align*}
+        a|n &\implies  n = ab\\
+        &\implies a,b < n\\
+        &\implies a=p_1p_2\dots p_k\\
+        &\implies b=q_1q_2\dots q_k\\
+        &\implies n=p_1p_2\dots p_k q_1q_2\dots q_k\\
+    \end{align*}
+\end{proof}
+\begin{theorem}
+    There are infinitely many primes.
+\end{theorem}
+\begin{proof}
+    Assume that there are finitely many primes, $p_1,\dots,p_k$.
+    Suppose, towards contradiction that we have $n=p_1p_2\dots p_k +1$.
+    Then there exists a prime $q|n$, but $p_i\neq q$ since every $p_i$
+    division leaves a remainder.
+\end{proof}
+An alternative approach can be seen,
+\begin{proof}
+    \begin{align*}
+        2<3<5<7<11<\dots&<p<\dots<q<\dots\\
+        p_1<p_2&<p_3<\dots\\
+        \frac{1}{p_1}+ \frac{1}{p_2}+\frac{1}{p_3}+&\dots+
+        \frac{1}{p_k}=\infty\\
+    \end{align*}
+    Which somehow follows from,
+    \[
+        \frac{1}{1}+ \frac{1}{2}+ \frac{1}{3}+\dots=\infty
+    \]
+    Beats me.
+\end{proof}
+\underline{Fact:} $\forall N\in \N$ there exists a prime $p$,
+such that $q-p>N$ where q is \underline{the next} prime.
+(We can make this claim about there being a next prime,
+thanks to the well ordering principle, where any non-empty subset of 
+$\N$ has a smallest element.)\\
+$\iff$ There exist composite numbers (non-primes),
+\begin{align*}
+    n,n+1,&\dots,n+L,\ L\geq N\\
+    (L+1)!+2,(L+2)!+3,&\dots,(L+1)!+L,(L+1)!+(L+1)\\
+\end{align*}
+(This baffles me.)\\
+\vspace{.2cm}
+\underline{Conjecture:} The \underline{Twin-prime conjecture} suggests that
+there are infinitely many pairs of primes of the form $p,p+2$
+\vspace{.2cm}
+\begin{definition}
+    Given $a,b\in \Z$, the \underline{Greatest Common Divisor} is defined
+    as such,
+    \begin{align*}
+        gcd(a,b):= \text{The largest common divisor, thanks goobz}
+    \end{align*}
+\end{definition}
+\vspace{.2cm}
+The \underline{Euclidean Algorithm} is as such,
+\begin{align*}
+    \exists a,b\in \Z,\ b\neq 0\\
+    \nexists y, r, s.t. a=qb+r,  0\leq r\leq |b|\\
+\end{align*}
+\begin{proof}
+    Without loss of generalty, $b>0$,\\
+    \begin{center}
+        \Large{Number line, with b on it}\\
+    \end{center}
+    \begin{itemize}
+        \item $\{a-qb: q\in \Z\}$ contains non-negative integers. Looking
+            at the subset of non-negatives, or $\{a-qb | q\in \Z,\ a-q\geq0\}$
+            we can select a smallest element, thanks to the well ordering
+            principle. We'll call this $r$, giving
+            \begin{align*}
+                a-qb=r\\
+                a=qb+r\\
+            \end{align*}
+        \item Algorithm for finding $gcd(a,b)$,
+            \begin{align*}
+                a=q_1b+r_1
+            \end{align*}
+            if $r_1=0$ then $gcd(a,b)=|b|$. If $r_1\neq 0$, then,
+            \begin{align*}
+                b = q_2r_1+r_2
+                r_1=\dots
+            \end{align*}
+            Apparently, we know this. Great. It has been proven. Libtards(me)
+            owned by facts and logic.
+    \end{itemize}
+\end{proof}
+\begin{theorem} % Should be corrollary
+    \begin{align*}
+        gcd(a,b)=xa+yb,\ \text{for some}\ x,y\in\Z\\
+    \end{align*}
+\end{theorem}
+\underline{Example:}
+\begin{align*}
+    gcd(18,22)&=2\\
+    &=x*18+y*22\\
+    &=(x+22)*18+(y-18)*22\\
+    &=5*18+(-4)*22
+\end{align*}
+\underline{Fact:}
+\begin{align*}
+    a_1,a_2,\dots,a_n\in\Z, \text{where not all are 0}\\
+\end{align*}
+Then,
+\begin{align*}
+    gcd(a_1,\dots,a_n)&=x_1a_1+\dots+x_na_n\\
+    gcd(a_1,\dots,a_n)&=gcd(gcd(a_1,\dots,a_{n-1})a_n)\\
+    &=min(x_1a_1+\dots+x_na_n|x_1,\dots,x_n\in \Z,\ x_1a_1+\dots+x_na_n>0)
+\end{align*}
+\end{document}

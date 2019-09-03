@@ -15,12 +15,17 @@
     \end{align*}
     and introduce the following notation,
     \begin{align*}
-        a|b = c
+        a|b
     \end{align*}
     \begin{itemize}
         \item \underline{Transitivity:} This satisfies transitivity as, $a$ divides $b$
             and $b$ divides $c$ implies that $a$ divides $c$.
-        \item \underline{Reflexivity:} ????
+        \item \underline{Note:}
+            \begin{align*}
+                a&|a\\
+                a&|b\land a|(b+c)\implies a|c\\
+                a&|b\land b|a\nimplies a=b
+            \end{align*}
     \end{itemize}
 \end{definition}
 \begin{definition}
@@ -88,8 +93,8 @@ there are infinitely many pairs of primes of the form $p,p+2$
 \vspace{.2cm}
 The \underline{Euclidean Algorithm} is as such,
 \begin{align*}
-    \exists a,b\in \Z,\ b\neq 0\\
-    \nexists y, r, s.t. a=qb+r,  0\leq r\leq |b|\\
+    \exists a,b&\in \Z,\ b\neq 0\\
+    \nexists y, r,\ s.t.\ a&=qb+r,  0\leq r\leq |b|\\
 \end{align*}
 \begin{proof}
     Without loss of generalty, $b>0$,\\
@@ -137,7 +142,7 @@ The \underline{Euclidean Algorithm} is as such,
 Then,
 \begin{align*}
     gcd(a_1,\dots,a_n)&=x_1a_1+\dots+x_na_n\\
-    gcd(a_1,\dots,a_n)&=gcd(gcd(a_1,\dots,a_{n-1})a_n)\\
+    &=gcd(gcd(a_1,\dots,a_{n-1})a_n)\\
     &=min(x_1a_1+\dots+x_na_n|x_1,\dots,x_n\in \Z,\ x_1a_1+\dots+x_na_n>0)
 \end{align*}
 \end{document}

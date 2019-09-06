@@ -1,155 +1,187 @@
 \documentclass[../notes.tex]{subfiles}
 \begin{document}
-\section{Day 4}
-\begin{align*}
-    \faktor{\Z}{n\Z}=\{\overline{0},\overline{1},\overline{2},\dots,\overline{n-1}\}\\
-    a\sim b \iff a=bmod(n)\\
-\end{align*}
-$\faktor{\Z}{n\Z}$ is a ring wrt,
-\begin{align*}
-    \overline{a}+\overline{b}=\overline{a+b}\\
-    \overline{a}\cdot\overline{b}=\overline{ab}
-\end{align*}
+\section{Day 3}
+\subsection{Modular Arithmetic}
+\begin{center}
+    \[
+        \faktor{\Z}{n\Z}
+    \]
+\end{center}
+\subsubsection{Quotient structures:}
+\begin{enumerate}
+    \item $X$ is a set, equipped with an equivalence relation
+        $\sim$.
+        \begin{align*}
+            X \rightarrow \faktor{X}{\sim}
+        \end{align*}
+    \item $R$ a ring, $I\in R$, where $I$ is an ideal.
+        \begin{align*}
+            R,I\ \rightarrow \faktor{R}{I}
+        \end{align*}
+    \item $G$ a group, $H \nabla G$ a normal subgroup
+        \begin{align*}
+            G, H\rightarrow \faktor{G}{H}
+        \end{align*}
+\end{enumerate}
+Note that 1 specializes to 2 and 3\\
+\vspace{.25cm}
+$X$, $\sim$ a relation $\equiv$ a set of ordered pairs
+of elements of $X$.
+\underline{Notation:}
+\[
+    x\sim y\equiv (x,y)\text{ is in the set of ordered pairs }
+\]
+\begin{definition}
+    $\sim$ is an equivalence relation if the folowing conditions
+    are satisfied
+    \begin{enumerate}
+        \item $x\sim x$
+        \item $x\sim y \implies y\sim x$
+        \item $x \sim y\sim z\implies x\sim
+            z$
+    \end{enumerate}
+\end{definition}
 \begin{itemize}
-    \item $\overline{0} $ $0$-element
-    \item $\overline{1}$ is $1$ in $\faktor{\Z}{n\Z}$
+    \item \underline{Example:} Discrete equivalence relationship, 
+        $x\sim y \iff x=y$
+    \item \underline{Example:} $\forall x,y,\ x\sim y$
 \end{itemize}
-\begin{theorem}
-    $\faktor{\Z}{n\Z}$ is a field if and only f $n=p$ where $p$ is prime.
-\end{theorem}
-\begin{proposition}
-    No field has $0$-divisors ($ab=0$ implies $a=0$ or $b=0$). Proof was
-    supplied last class
-\end{proposition}
-\underline{Note:}
-$R$ is a ring, therefore
-\begin{align*}
-    0\cdot r=0\\
-    (-a)b=a(-b)=-(ab)
-\end{align*}
-$0$ and $1$ are unique.
-\begin{proof}
-$p$ does not divide $a$ if and only if $gcd(a,p)=1$.
-\begin{align*}
-    \exists x,y \in \Z,\ xa+yp=1\\
-    \overline{xa+yp}=\overline{1}\\
-    \overline{x}\cdot\overline{a}+\underbrace{\overline{y}\cdot\overline{p}}_{\text{cancels out for some reason}}=\overline{1}\\
-    \overline{x}\cdot\overline{a}=\overline{1}\\
-    \implies \faktor{\Z}{n\Z},\ \text{ a field }\\
-\end{align*}
-Assume $n$ is not a prime, where
-\begin{align*}
-    n=ab,\ \text{ with }\ a,b>1\\
-    \overline{n}=\overline{a}\cdot\overline{b}\\
-    \overline{0}=\overline{a}\cdot\overline{b}
-\end{align*}
-$\implies\faktor{\Z}{n\Z}$ has $0$-divisors because $\overline{a},
-\overline{b}\neq 0$, thus the previous proposition is proven.
-\end{proof}
 \begin{definition}
-    Given a ring $R$, we use the notation, $R^*$ to
-    indicate that it has invertible elements. Furthermore, we observe that
-    $R^*$ is an abelian group w.r.t. product.
+    \begin{enumerate}
+        \item $(x,\sim)$ is an equivalence relation. $x\in X$ the
+            equivalence class of $x$ denoted $\hat{x}$ is the set of $y$ with
+            $x\sim y$
+        \item $X$ breaks up into the (non-overlapping) equivalence class.
+            \begin{center}
+                \[
+                    z\in \overline{x}\cap\overline{y}
+                \]
+                \Large{CIRCLE WITH OTHER CIRCLES IN IT}
+            \end{center}
+    \end{enumerate}
 \end{definition}
-\begin{theorem}
-    (This should be a corrolary). $p$ is a prime.
-    \[
-        (\faktor{\Z}{p\Z})^*=\{\overline{1},\overline{2},\dots,\overline{p-1}\}
-    \]
-\end{theorem}
-\begin{theorem}
-    (Also a corrolary)\\
-    $\forall a\in \Z$ $p$ does not divide $a$.
-    \[
-        a^{p-1}=1mod(p)
-    \]
-\end{theorem}
-\underline{Example:}
-\begin{align*}
-    p=3,\ a=16\\
-    16^2=1mod(3)
-\end{align*}
-\begin{proposition}
-    $G$ is a finite group.
-    \begin{align*}
-        \forall x\in G,\ x^{|G|}=1\\
-        \overline{a}^{p-1}=\overline{1}\\
-        a^{p-1}=1mod(p)
-    \end{align*}
-\end{proposition}
-Alternative proof of Corrolary 2,
-\begin{proof}
-    \begin{align*}
-        1\cdot 2\cdot 3\dots\cdot(p-1)\\
-        x\mapsto axmod(p)\\
-    \end{align*}
-    Assume $ax=aymod(p)$. We want to show,
-    \begin{align*}
-        x=y\\
-        \overline{a}\cdot\overline{x}= \overline{a}\cdot\overline{y}\\
-        \overline{a}(\overline{x}-\overline{y})=0\\
-        \overline{x}-\overline{y}=0
-    \end{align*}
-    Somehow, we move on to,
-    \begin{align*}
-        \overline{1} \cdot \overline{2} \cdot \overline{3}
-        \cdot\dots
-        (\overline{p-1})=
-        (\overline{a\cdot 1})
-        \cdot
-        (\overline{a\cdot 2})
-        \cdot\dots
-        (\overline{a\cdot (p-1)})\\
-        \overline{(p-1)}!=(\overline{a})^(p-1)\cdot\overline{(p-1)}!\\
-        \overline{(p-1)}=\overline{z}\neq{0}\\
-        \overline{z}=(\overline{a})^{p-1}\cdot\overline{z}\\
-        \overline{z}-\overline{a}^{p-1}\cdot\overline{z}=0\\
-        \overline{z}(\overline{1}-\overline{a}^{p-1})=0\\
-    \end{align*}
-\end{proof}
-\subsection{Primality test}
-$n$ Pick a coprime with $n$, check whether $a^{n-1}=1mod(n)$,
-if they are not equal, then $n$ is not prime. Plus some other easily checked
-conditions. This also somehow implies a fast algorithm for testing natural
-numbers for primality.\\
-Unfortunately (hahaha what? is there anything more unfortunate than the
-previous factoid? in any case, I continue, with regret).
-\begin{align*}
-    \exists n\in \N\\
-    a^{n-1}=1mod(n)\\
-\end{align*}
-for every $a$ with $gcd(a,n)=1$. Sick.\\
 \begin{definition}
     \begin{align*}
-        \varphi(n)=|\{i:1\leq i\leq n-1,\ gcd(i,n)=1\}|\\
-        \varphi(p)=p-1\\
-        \varphi(n)=
-        n(1-\frac{1}{p_1}) \dots (1-\frac{1}{p_k})\\
+        \faktor{\Z}{n\Z}\text{ (the set of equivalence classes) }\\\\
     \end{align*}
-    $p_1,\dots,p_k$ are the prime factors of $n$
+    With the set of equivalence classes as $\{\overline{0}, \overline{1},
+    \dots, \overline{n-1}\}$
+    \begin{align*}
+        n\in \N&=\{1,2,\dots\}\\
+        a\sim b &\equiv a=b(mod n) \iff n|a-b\\
+    \end{align*}
+    \begin{enumerate}
+        \item There is an equivalence relation
+        \item $a, a^{\prime},b, b^{\prime}\in \Z$
+    \end{enumerate}
+\end{definition}
+\begin{align*}
+    \overline{a}=\overline{a}^{\prime}\\
+    \overline{b}=\overline{b}^{\prime}\\
+    \implies \overline{a+b}=\overline{a^{\prime}+b^{\prime}}
+    \implies \overline{ab}=\overline{a^{\prime}b^{\prime}}
+\end{align*}
+To show $\overline{a+b}=\overline{a^{\prime}+b^{\prime}}$,
+\begin{align*}
+    n|(a+b)-(a^{\prime}+b^{\prime})\\
+    n|(a-a^{\prime})+(b-b^{\prime})\\
+\end{align*}
+To show $\overline{ab}=\overline{a^{\prime}b^{\prime}}$
+\begin{align*}
+    n|(ab-a^{\prime}b^{\prime})\\
+    ab-ab^{\prime}+ab^{\prime}-a^{\prime}b^{\prime}\\
+    n|a(b-b^{\prime})+(a-a^{\prime})b^{\prime}
+\end{align*}
+\begin{align*}
+    \overline{0}&=n\Z\\
+    \overline{1}&=1+n\Z\\
+    \overline{2}&=2+n\Z\\
+    &\vdots\\
+    \overline{n-1}&=(n-1)+n
+\end{align*}
+\begin{definition}
+    $\faktor{\Z}{2\Z}$ is a ring w.r.t,
+    \begin{align*}
+        \overline{a}\cdot\overline{b}\equiv\overline{ab}\\
+        \overline{a}+\overline{b}\equiv\overline{a+b}
+    \end{align*}
+    \begin{enumerate}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                (\overline{a}+\overline{b})+\overline{c}=
+                \overline{a}+(\overline{b}+\overline{c})\\
+                (\overline{a}+\overline{b})+\overline{c}
+                =\overline{a+b}+\overline{c}=
+                \overline{(a+b)+c}\\
+                \overline{a}+(\overline{b}+\overline{c})=
+                \overline{a}+\overline{b+a}=\overline{a+(b+c)}
+            \end{align*}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                (\overline{a}\overline{b})\overline{c}=
+                \overline{a}(\overline{b}\overline{c})
+            \end{align*}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                \overline{a}=\overline{a}+\overline{0}=
+                \overline{0}+\overline{a}=\overline{a}
+            \end{align*}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                \overline{a}+\overline{x}=\overline{0}
+                \iff \overline{x}=\overline{-a}
+            \end{align*}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                \overline{a}+\overline{b}=\overline{b}+\overline{c}=\overline{a+b}
+            \end{align*}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                \overline{a}(\overline{b}+\overline{b})=
+                \overline{a}\overline{b+c}\\
+                =\overline{a(b+c)}\\
+                =\overline{ab+ac}\\
+                =\overline{ab}+\overline{ac}\\
+                =\overline{a}\overline{b}+\overline{a}\overline{c}
+            \end{align*}
+        \item
+            \vspace{.1cm}
+            \begin{align*}
+                \overline{1}\cdot\overline{a}=\overline{1\cdot a}=\overline{a}
+            \end{align*}
+    \end{enumerate}
 \end{definition}
 \begin{theorem}
+    \underline{(This should be a proposition)}
+    $\faktor{\Z}/{n\Z}$ is a field if and only if $n=p$ where
+    $p$ is prime.
+\end{theorem}
+\begin{theorem}
+    \underline{(This should be a proposition)}
+    $F$ is a field if $F$ has no zero-divisors, or
     \begin{align*}
-        a\n\in N,\ gcd(a,n)=1\\
-        a^{\varphi(n)}=1mod(n)\\
+        ab=0\\
+        \implies a=0 \text{ or } b=0\\
     \end{align*}
 \end{theorem}
-\begin{proposition}
-    (Should be an idea. Utter shrapnel of an idea, but an idea nonetheless)
-    \[
-        (\faktor{\Z}{n\Z})=\{\overline{i}: 1\leq i\leq n-1,\ gcd(i,n)=1\}
-    \]
-\end{proposition}
-\begin{theorem}
-    (Should be a lemma)\\
-    \[
-        \varphi(ab)=\varphi(a)\varphi(b)
-    \]
-    if $a,b\in \N$ with $gcd(a,b)=1$
+\begin{proof}
+    Assume $ab=0$ and $a\neq0$
     \begin{align*}
-        n=p_1^{d_1}\dots p_k^{d_k}
-        \varphi(p^d)=
+        0=a^{-1}0=a^{-1}(ab)=(a^{-1}a)b=1\cdot b=b
     \end{align*}
-    Yes, that lemma ends there. That's it. No more lemmas.
+\end{proof}
+\begin{theorem}
+    \underline{This should be a fact, also it confuses me}
+    For every $p$ (a prime), and $n\in\N$, there is a \underline{unique}
+    field of size $p^n$,
+    \begin{align*}
+        \mathbb{F}_{p^m}\le \mathbb{F}_{p^n} \text{ if } m|n
+    \end{align*}
 \end{theorem}
 \end{document}

@@ -1,0 +1,155 @@
+\documentclass[../notes.tex]{subfiles}
+\begin{document}
+\section{Day 4}
+\begin{align*}
+    \faktor{\Z}{n\Z}=\{\overline{0},\overline{1},\overline{2},\dots,\overline{n-1}\}\\
+    a\sim b \iff a=bmod(n)\\
+\end{align*}
+$\faktor{\Z}{n\Z}$ is a ring wrt,
+\begin{align*}
+    \overline{a}+\overline{b}=\overline{a+b}\\
+    \overline{a}\cdot\overline{b}=\overline{ab}
+\end{align*}
+\begin{itemize}
+    \item $\overline{0} $ $0$-element
+    \item $\overline{1}$ is $1$ in $\faktor{\Z}{n\Z}$
+\end{itemize}
+\begin{theorem}
+    $\faktor{\Z}{n\Z}$ is a field if and only f $n=p$ where $p$ is prime.
+\end{theorem}
+\begin{proposition}
+    No field has $0$-divisors ($ab=0$ implies $a=0$ or $b=0$). Proof was
+    supplied last class
+\end{proposition}
+\underline{Note:}
+$R$ is a ring, therefore
+\begin{align*}
+    0\cdot r=0\\
+    (-a)b=a(-b)=-(ab)
+\end{align*}
+$0$ and $1$ are unique.
+\begin{proof}
+$p$ does not divide $a$ if and only if $gcd(a,p)=1$.
+\begin{align*}
+    \exists x,y \in \Z,\ xa+yp=1\\
+    \overline{xa+yp}=\overline{1}\\
+    \overline{x}\cdot\overline{a}+\underbrace{\overline{y}\cdot\overline{p}}_{\text{cancels out for some reason}}=\overline{1}\\
+    \overline{x}\cdot\overline{a}=\overline{1}\\
+    \implies \faktor{\Z}{n\Z},\ \text{ a field }\\
+\end{align*}
+Assume $n$ is not a prime, where
+\begin{align*}
+    n=ab,\ \text{ with }\ a,b>1\\
+    \overline{n}=\overline{a}\cdot\overline{b}\\
+    \overline{0}=\overline{a}\cdot\overline{b}
+\end{align*}
+$\implies\faktor{\Z}{n\Z}$ has $0$-divisors because $\overline{a},
+\overline{b}\neq 0$, thus the previous proposition is proven.
+\end{proof}
+\begin{definition}
+    Given a ring $R$, we use the notation, $R^*$ to
+    indicate that it has invertible elements. Furthermore, we observe that
+    $R^*$ is an abelian group w.r.t. product.
+\end{definition}
+\begin{theorem}
+    (This should be a corrolary). $p$ is a prime.
+    \[
+        (\faktor{\Z}{p\Z})^*=\{\overline{1},\overline{2},\dots,\overline{p-1}\}
+    \]
+\end{theorem}
+\begin{theorem}
+    (Also a corrolary)\\
+    $\forall a\in \Z$ $p$ does not divide $a$.
+    \[
+        a^{p-1}=1mod(p)
+    \]
+\end{theorem}
+\underline{Example:}
+\begin{align*}
+    p=3,\ a=16\\
+    16^2=1mod(3)
+\end{align*}
+\begin{proposition}
+    $G$ is a finite group.
+    \begin{align*}
+        \forall x\in G,\ x^{|G|}=1\\
+        \overline{a}^{p-1}=\overline{1}\\
+        a^{p-1}=1mod(p)
+    \end{align*}
+\end{proposition}
+Alternative proof of Corrolary 2,
+\begin{proof}
+    \begin{align*}
+        1\cdot 2\cdot 3\dots\cdot(p-1)\\
+        x\mapsto axmod(p)\\
+    \end{align*}
+    Assume $ax=aymod(p)$. We want to show,
+    \begin{align*}
+        x=y\\
+        \overline{a}\cdot\overline{x}= \overline{a}\cdot\overline{y}\\
+        \overline{a}(\overline{x}-\overline{y})=0\\
+        \overline{x}-\overline{y}=0
+    \end{align*}
+    Somehow, we move on to,
+    \begin{align*}
+        \overline{1} \cdot \overline{2} \cdot \overline{3}
+        \cdot\dots
+        (\overline{p-1})=
+        (\overline{a\cdot 1})
+        \cdot
+        (\overline{a\cdot 2})
+        \cdot\dots
+        (\overline{a\cdot (p-1)})\\
+        \overline{(p-1)}!=(\overline{a})^(p-1)\cdot\overline{(p-1)}!\\
+        \overline{(p-1)}=\overline{z}\neq{0}\\
+        \overline{z}=(\overline{a})^{p-1}\cdot\overline{z}\\
+        \overline{z}-\overline{a}^{p-1}\cdot\overline{z}=0\\
+        \overline{z}(\overline{1}-\overline{a}^{p-1})=0\\
+    \end{align*}
+\end{proof}
+\subsection{Primality test}
+$n$ Pick a coprime with $n$, check whether $a^{n-1}=1mod(n)$,
+if they are not equal, then $n$ is not prime. Plus some other easily checked
+conditions. This also somehow implies a fast algorithm for testing natural
+numbers for primality.\\
+Unfortunately (hahaha what? is there anything more unfortunate than the
+previous factoid? in any case, I continue, with regret).
+\begin{align*}
+    \exists n\in \N\\
+    a^{n-1}=1mod(n)\\
+\end{align*}
+for every $a$ with $gcd(a,n)=1$. Sick.\\
+\begin{definition}
+    \begin{align*}
+        \varphi(n)=|\{i:1\leq i\leq n-1,\ gcd(i,n)=1\}|\\
+        \varphi(p)=p-1\\
+        \varphi(n)=
+        n(1-\frac{1}{p_1}) \dots (1-\frac{1}{p_k})\\
+    \end{align*}
+    $p_1,\dots,p_k$ are the prime factors of $n$
+\end{definition}
+\begin{theorem}
+    \begin{align*}
+        a\n\in N,\ gcd(a,n)=1\\
+        a^{\varphi(n)}=1mod(n)\\
+    \end{align*}
+\end{theorem}
+\begin{proposition}
+    (Should be an idea. Utter shrapnel of an idea, but an idea nonetheless)
+    \[
+        (\faktor{\Z}{n\Z})=\{\overline{i}: 1\leq i\leq n-1,\ gcd(i,n)=1\}
+    \]
+\end{proposition}
+\begin{theorem}
+    (Should be a lemma)\\
+    \[
+        \varphi(ab)=\varphi(a)\varphi(b)
+    \]
+    if $a,b\in \N$ with $gcd(a,b)=1$
+    \begin{align*}
+        n=p_1^{d_1}\dots p_k^{d_k}
+        \varphi(p^d)=
+    \end{align*}
+    Yes, that lemma ends there. That's it. No more lemmas.
+\end{theorem}
+\end{document}
